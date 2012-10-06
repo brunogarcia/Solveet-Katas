@@ -8,12 +8,6 @@ function Player(name, id) {
 
 function Game(name_player_1, name_player_2) {
 
-    var scoreboard = {
-        "start": ["love", "fifteen", "thirty", "forty"],
-        "deuce": ["deuce", "advantage"],
-        "final": ["loser", "winner"]
-    };
-
     var player_1 = new Player(name_player_1, 1);
     var player_2 = new Player(name_player_2, 2);
     var players = [player_1, player_2];
@@ -61,15 +55,15 @@ function Game(name_player_1, name_player_2) {
         }
     };
     var bothHaveSameScore = function(score) {
-        return (player_1.score === score && player_2.score === score) ? true : false;
-    }
+        return !!(player_1.score === score && player_2.score === score);
+    };
     var convertBothToDeuce = function() {
         player_1.score = "deuce";
         player_2.score = "deuce";
-    }
+    };
     var convertToAdvantage = function(player) {
         player.score = "advantage";
-    }
+    };
     this.ScoreOf = function(player) {
         return players[player].score;
     };
